@@ -20,7 +20,7 @@ class User (AbstractUser):
     # Extending AbstractUser to create a custom user model
     date_left = models.DateField(null=True, blank=True)
     def __str__(self):
-        return self.get_fullname()
+        return self.get_full_name()
 
 class Project(models.Model):
     name = models.CharField("Project name", max_length=128)
