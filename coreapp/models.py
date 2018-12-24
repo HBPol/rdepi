@@ -36,8 +36,8 @@ class Location(models.Model):
         return self.name
 
 class Document(models.Model):
-    author = models.ManyToManyField(settings.AUTH_USER_MODEL, verbose_name="Document author")
-    project = models.ManyToManyField(Project, verbose_name="Project")
+    author = models.ManyToManyField(settings.AUTH_USER_MODEL, verbose_name="Document author(s)")
+    project = models.ManyToManyField(Project, verbose_name="Associated project(s)")
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Hard copy location")
     document_code = models.CharField("Document code (e.g. study plan, report... )", max_length=3, choices=DOCUMENT_CODE, default='OTH')
     efile = models.FileField("Scanned copy", upload_to='uploads/', null=True, blank=True)
@@ -47,7 +47,7 @@ class Document(models.Model):
 class StudyPlan(Document):
     title = models.TextField("Study plan title")
     status = models.CharField("Document status", max_length=3, choices=DOCUMENT_STATUS, default='PEN')
-    # TODO: see if 'document_code' can be set here as a constant... e.g. document_code = 'SP'
+    document_code = 'SP'
     sign_date = models.DateField("Sign-off date", null=True, blank=True)
     def __str__(self):
         return self.title
@@ -56,7 +56,7 @@ class Report(Document):
     study_plan = models.ManyToManyField(StudyPlan, verbose_name="Study plan")
     title = models.TextField("Report title")
     status = models.CharField("Document status", max_length=3, choices=DOCUMENT_STATUS, default='PEN')
-    # TODO: see if 'document_code' can be set here as a constant... e.g. document_code = 'R'
+    document_code = 'R'
     sign_date = models.DateField("Sign-off date", null=True, blank=True)
     def __str__(self):
         return self.title
@@ -68,7 +68,7 @@ class RelatedFile(Document):
     date_archived = models.DateField("Date archived", null=True, blank=True)
     alias = models.CharField("Alias (other names this file may be known as)", max_length=512, null=True, blank=True)
     vol_num = models.IntegerField("Volume number", null=True, blank=True)
-    # TODO: see if 'document_code' can be set here as a constant... e.g. document_code = 'RDF'
+    document_code = 'RDF'
     def __str__(self):
         return self.content_descr
 
@@ -79,7 +79,7 @@ class LabBook(Document):
     date_issued = models.DateField("Issue date")
     index_added = models.BooleanField("Index added to project file", default=False)
     index_num_pages = models.IntegerField("Index number of pages", null=True, blank=True)
-    # TODO: see if 'document_code' can be set here as a constant... e.g. document_code = 'LBN'
+    document_code = 'LBN'
     def __str__(self):
         return self.content_descr
 
