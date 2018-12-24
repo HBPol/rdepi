@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 
 DOCUMENT_CODE = (
@@ -17,7 +18,7 @@ DOCUMENT_STATUS = (
 
 class User (AbstractUser):
     # Extending AbstractUser to create a custom user model
-    date_left = models.CharField(max_length=30)
+    date_left = models.DateField(null=True, blank=True)
     def __str__(self):
         return self.get_fullname()
 
@@ -35,8 +36,8 @@ class Location(models.Model):
         return self.name
 
 class Document(models.Model):
-    author = models.ManyToManyField(settings.AUTH_USER_MODE, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Document author")
-    project = models.ManyToManyField(Project, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Project")
+    author = models.ManyToManyField(settings.AUTH_USER_MODEL, verbose_name="Document author")
+    project = models.ManyToManyField(Project, verbose_name="Project")
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Hard copy location")
     document_code = models.CharField("Document code (e.g. study plan, report... )", max_length=3, choices=DOCUMENT_CODE, default='OTH')
     efile = models.FileField("Scanned copy", upload_to='uploads/', null=True, blank=True)
