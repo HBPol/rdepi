@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+{% block title %}
+	<title>{{ page_title }}</title>
+{% endblock %}
+</head>
+<body>
+<p><a href="{% url 'home' %}">Home</a></p>
+{% block content %}
+			
+{% endblock %}
+</body>
+</html>
