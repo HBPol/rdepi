@@ -10,7 +10,7 @@ urlpatterns = [
     path('project/edit/update/<int:id>', views.project_update, name='project-update'),
     path('project/delete/<int:id>', views.project_delete, name='project-delete'),
     
-    path('project/', views.location_index, name='location-index'),
+    path('location/', views.location_index, name='location-index'),
     path('location/create/', views.location_create, name='location-create'),
     path('location/edit/<int:id>', views.location_edit, name='location-edit'),
     path('location/edit/update/<int:id>', views.location_update, name='location-update'),

@@ -5,7 +5,7 @@ def home(request):
 
 # Project views
 def project_index(request):
-    pass
+    return render(request, 'coreapp/project_index.html')
 def project_create(request):
     pass
 def project_edit(request):
@@ -17,7 +17,7 @@ def project_delete(request):
 
 # Location views
 def location_index(request):
-    pass
+    return render(request, 'coreapp/location_index.html')
 def location_create(request):
     pass
 def location_edit(request):
@@ -29,7 +29,7 @@ def location_delete(request):
 
 # StudyPlan views
 def studyplan_index(request):
-    pass
+    return render(request, 'coreapp/studyplan_index.html')
 def studyplan_create(request):
     pass
 def studyplan_edit(request):
@@ -41,7 +41,7 @@ def studyplan_delete(request):
 
 # Report views
 def report_index(request):
-    pass
+    return render(request, 'coreapp/report_index.html')
 def report_create(request):
     pass
 def report_edit(request):
@@ -53,7 +53,7 @@ def report_delete(request):
 
 # RelatedFile views
 def relatedfile_index(request):
-    pass
+    return render(request, 'coreapp/relatedfile_index.html')
 def relatedfile_create(request):
     pass
 def relatedfile_edit(request):
@@ -65,7 +65,7 @@ def relatedfile_delete(request):
 
 # LabBook views
 def labbook_index(request):
-    pass
+    return render(request, 'coreapp/labbook_index.html')
 def labbook_create(request):
     pass
 def labbook_edit(request):
