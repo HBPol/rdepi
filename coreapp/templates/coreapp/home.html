@@ -1,11 +1,9 @@
 {% extends 'coreapp/base_generic.html' %}
 {% block content %}
-<a href="{% url 'project-index' %}">Projects</a>
-<a href="{% url 'location-index' %}">Locations</a>
-<a href="{% url 'studyplan-index' %}">Study plans</a>
-<a href="{% url 'report-index' %}">Reports</a>
-<a href="{% url 'relatedfile-index' %}">Project-related files</a>
-<a href="{% url 'labbook-index' %}">Lab notebooks</a>
-
-
+<a href="{% url 'project-list' %}">Projects</a>
+<a href="{% url 'location-list' %}">Locations</a>
+<a href="{% url 'studyplan-list' %}">Study plans</a>
+<a href="{% url 'report-list' %}">Reports</a>
+<a href="{% url 'relatedfile-list' %}">Project-related files</a>
+<a href="{% url 'labbook-list' %}">Lab notebooks</a>
 {% endblock %}

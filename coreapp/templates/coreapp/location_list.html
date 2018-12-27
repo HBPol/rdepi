@@ -1,0 +1,21 @@
+{% extends 'coreapp/base_generic.html' %}
+{% block content %}
+	<h1>{{ page_title }}</h1>
+	<hr>
+	<table>
+		<thead>
+			<th>Room No.</th>
+			<th>Room</th>
+			<th>Actions</th>
+		</thead>
+		{% for location in locations %}
+		<tr>
+			<td>{{ location.name }}</td>
+			<td>{{ location.room_num }}</td>
+			<td><a href="">Details</a> | <a href="edit/{{ location.id }}">Edit</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+	<a href="{% url 'location-create' %}">Add new</a>
+{% endblock %}

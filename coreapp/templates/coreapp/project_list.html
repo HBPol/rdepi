@@ -1,0 +1,23 @@
+{% extends 'coreapp/base_generic.html' %}
+{% block content %}
+	<h1>{{ page_title }}</h1>
+	<hr>
+	<table>
+		<thead>
+			<th>Project</th>
+			<th>Project code</th>
+			<th>Project leader</th>
+			<th>Actions</th>
+		</thead>
+		{% for project in projects %}
+		<tr>
+			<td>{{ project.name }}</td>
+			<td>{{ project.prefix }}</td>
+			<td>{{ project.leader }}</td>
+			<td><a href="">Details</a> | <a href="edit/{{ project.id }}">Edit</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+	<a href="{% url 'project-create' %}">Add new</a>
+{% endblock %}
