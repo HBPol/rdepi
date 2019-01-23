@@ -2,7 +2,8 @@ from django.shortcuts import render
 from coreapp.models import Project, Location, StudyPlan, Report, RelatedFile, LabBook
 
 def home(request):
-    return render(request, 'coreapp/home.html')
+    context = {'page_title': 'R&D EPI | Home'}
+    return render(request, 'coreapp/home.html', context)
 
 # Project views
 def project_list(request):

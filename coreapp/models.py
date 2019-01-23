@@ -36,8 +36,8 @@ class Location(models.Model):
         return self.name
 
 class Document(models.Model):
-    author = models.ManyToManyField(settings.AUTH_USER_MODEL, verbose_name="Document author(s)")
-    project = models.ManyToManyField(Project, verbose_name="Associated project(s)")
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Main author") # It is assumed each document has one author only (many-to-one)
+    project = models.ForeignKey(Project, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Associated project") # Similarly, it is assumed each document belongs to one project only (many-to-one)
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Hard copy location")
     document_code = models.CharField("Document code (e.g. study plan, report... )", max_length=3, choices=DOCUMENT_CODE, default='OTH')
     efile = models.FileField("Scanned copy", upload_to='uploads/', null=True, blank=True)
@@ -53,7 +53,7 @@ class StudyPlan(Document):
         return self.title
 
 class Report(Document):
-    study_plan = models.ManyToManyField(StudyPlan, verbose_name="Study plan")
+    study_plan = models.ForeignKey(StudyPlan, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Study plan") # It is assumed each report has one study plan only (many-to-one)
     title = models.TextField("Report title")
     status = models.CharField("Document status", max_length=3, choices=DOCUMENT_STATUS, default='PEN')
     document_code = 'R'
