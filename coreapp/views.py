@@ -16,7 +16,7 @@ def project_create(request):
     if request.method == "POST":
         project = Project(
             name=request.POST['name'],
-            leader=request.POST['leader'],
+            leader_id=request.POST['leader'],
             prefix=request.POST['prefix'],
             )
         project.save()
