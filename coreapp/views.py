@@ -12,20 +12,17 @@ def project_list(request):
     projects = Project.objects.all()
     context = {'projects': projects, 'page_title': 'R&D EPI | Projects'}
     return render(request, 'coreapp/project_list.html', context)
+
 def project_create(request):
     if request.method == "POST":
-        project = Project(
-            name=request.POST['name'],
-            leader_id=request.POST['leader'],
-            prefix=request.POST['prefix'],
-            )
-        project.save()
-        return redirect('project-list')
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('project-list')
     else:
-        # send the user to the empty form along with a list of registered users to populate the dropdown list in the form
-        userlist = User.objects.all()
-        context = {'userlist': userlist, 'page_title': 'R&D EPI | Create new project'}
-        return render(request, 'coreapp/project_create.html', context)
+        form = ProjectForm()
+    context = {'form_project': form, 'page_title': 'R&D EPI | Create new project'}
+    return render (request, 'coreapp/project_create.html', context)
 
 def project_edit(request, id):
     pass
