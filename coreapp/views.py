@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from coreapp.models import Project, Location, StudyPlan, Report, RelatedFile, LabBook
+from django.shortcuts import render, redirect
+from django.conf import settings
+from coreapp.models import User, Project, Location, StudyPlan, Report, RelatedFile, LabBook
+from coreapp.forms import ProjectForm
 
 def home(request):
     context = {'page_title': 'R&D EPI | Home'}
@@ -11,7 +13,20 @@ def project_list(request):
     context = {'projects': projects, 'page_title': 'R&D EPI | Projects'}
     return render(request, 'coreapp/project_list.html', context)
 def project_create(request):
-    pass
+    if request.method == "POST":
+        project = Project(
+            name=request.POST['name'],
+            leader=request.POST['leader'],
+            prefix=request.POST['prefix'],
+            )
+        project.save()
+        return redirect('project-list')
+    else:
+        # send the user to the empty form along with a list of registered users to populate the dropdown list in the form
+        userlist = User.objects.all()
+        context = {'userlist': userlist, 'page_title': 'R&D EPI | Create new project'}
+        return render(request, 'coreapp/project_create.html', context)
+
 def project_edit(request, id):
     pass
 def project_update(request, id):

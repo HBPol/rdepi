@@ -1,0 +1,26 @@
+{% extends 'coreapp/base_generic.html' %}
+{% block content %}
+	<h1>{{ page_title }}</h1>
+	<hr>
+		<form action="" method="POST">
+			{% csrf_token %}
+			
+			Project name:<br>
+			<input type="text" name="name" required="required"/>
+			<br>
+			Project prefix:<br>
+			<input type="text" name="prefix" required="required"/>
+			<br>	
+			Project leader:<br>
+			<select name="leader" required="required"/>
+			{% for user in userlist %}
+				<option value="{{user.id}}">{{user}}</option>
+			{% endfor %}
+			</select>
+			<br>
+
+			<button type="submit">Add</button>
+			<br>
+			
+		</form>
+{% endblock %}

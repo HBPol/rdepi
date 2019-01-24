@@ -36,8 +36,12 @@ class Location(models.Model):
         return self.name
 
 class Document(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Main author") # It is assumed each document has one author only (many-to-one)
-    project = models.ForeignKey(Project, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Associated project") # Similarly, it is assumed each document belongs to one project only (many-to-one)
+    # It is assumed each document has one author only (many-to-one)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Main author")
+    # Similarly, for the prototype only, it is assumed each document belongs to one project only (many-to-one)
+    # TODO: 'project' is set here as many-to-one here, but consider many-to-many in the final version, because some documents may be associated with more than one project (e.g. raw data files or labbooks ...)
+    # project = models.ManyToManyField(Project, verbose_name="Associated project(s)")
+    project = models.ForeignKey(Project, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Associated project")
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Hard copy location")
     document_code = models.CharField("Document code (e.g. study plan, report... )", max_length=3, choices=DOCUMENT_CODE, default='OTH')
     efile = models.FileField("Scanned copy", upload_to='uploads/', null=True, blank=True)
