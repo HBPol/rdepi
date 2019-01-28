@@ -19,8 +19,8 @@
 		</thead>
 		{% for relatedfile in relatedfiles %}
 		<tr>
-			<td>{{ relatedfile.author.name }}</td>
-			<td>{{ relatedfile.project.name }}</td>
+			<td>{{ relatedfile.author }}</td>
+			<td>{{ relatedfile.project }}</td>
 			<td>{{ relatedfile.location }}</td>
 			<td>{{ relatedfile.document_code }}</td>
 			<td>{{ relatedfile.efile }}</td>

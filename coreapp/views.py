@@ -148,6 +148,7 @@ def relatedfile_edit(request, id):
     relatedfile = RelatedFile.objects.get(id=id)
     form = RelatedFileForm(instance=relatedfile)
     context = {'relatedfile': relatedfile, 'form_relatedfile': form, 'page_title': 'R&D EPI | Edit related file'}
+    return render(request, 'coreapp/relatedfile_edit.html', context)
 def relatedfile_update(request, id):
     relatedfile = RelatedFile.objects.get(id=id)
     form = RelatedFileForm(request.POST, request.FILES, instance=relatedfile)
@@ -173,9 +174,16 @@ def labbook_create(request):
     context = {'form_labbook': form, 'page_title': 'R&D EPI | Create new lab book'}
     return render (request, 'coreapp/labbook_create.html', context)
 def labbook_edit(request, id):
-    pass
+    labbook = LabBook.objects.get(id=id)
+    form = LabBookForm(instance=labbook)
+    context = {'labbook': labbook, 'form_labbook': form, 'page_title': 'R&D EPI | Edit related file'}
+    return render(request, 'coreapp/labbook_edit.html', context)
 def labbook_update(request, id):
-    pass
+    labbook = LabBook.objects.get(id=id)
+    form = LabBookForm(request.POST, request.FILES, instance=labbook)
+    if form.is_valid():
+        form.save()
+        return redirect('labbook-list')
 def labbook_delete(request, id):
     pass
 
