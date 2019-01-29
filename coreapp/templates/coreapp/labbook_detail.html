@@ -1,0 +1,17 @@
+{% extends 'coreapp/base_generic.html' %}
+{% block content %}
+	<h1>{{ page_title }}</h1>
+	<hr>
+	<p>Content description: {{ labbook.content_descr }}</p>
+	<p>Author: {{labbook.author}}</p>
+	<p>Project: {{ labbook.project.prefix }}</p>
+	<p>Electronic copy: {{ labbook.efile }}</p>
+	<p>Location: {{ labbook.location }}</p>
+	<hr>
+	<p>Date issued: {{ labbook.date_issued }}</p>
+	<p>Date started: {{ labbook.date_started }}</p>
+	<p>Date finished: {{ labbook.date_finished }}</p>
+	<p>Index added: {{ labbook.index_added }}</p>
+	<p>Index num. pages: {{ labbook.index_num_pages }}</p>
+	
+{% endblock %}

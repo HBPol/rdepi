@@ -1,0 +1,34 @@
+{% extends 'coreapp/base_generic.html' %}
+{% block content %}
+	<h1>{{ page_title }}</h1>
+	<hr>
+	<table>
+		<thead>
+			<th>Author</th>
+			<th>Project</th>
+			<th>Location</th>
+			<th>Doc. code</th>
+			<th>E-copy</th>
+			<th>Study plan</th>
+			<th>Title</th>
+			<th>Status</th>
+			<th>Sign off date</th>
+		</thead>
+		{% for report in reports %}
+		<tr>
+			<td>{{ report.author }}</td>
+			<td>{{ report.project }}</td>
+			<td>{{ report.location }}</td>
+			<td>{{ report.document_code }}</td>
+			<td>{{ report.efile }}</td>
+			<td>{{ report.study_plan }}</td>
+			<td>{{ report.title }}</td>
+			<td>{{ report.status }}</td>
+			<td>{{ report.sign_date }}</td>
+			<td><a href="{{ report.id }}">Details</a> | <a href="edit/{{ report.id }}">Edit</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+	<a href="{% url 'report-create' %}">Add new</a>
+{% endblock %}

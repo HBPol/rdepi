@@ -1,0 +1,32 @@
+{% extends 'coreapp/base_generic.html' %}
+{% block content %}
+	<h1>{{ page_title }}</h1>
+	<hr>
+	<table>
+		<thead>
+			<th>Author</th>
+			<th>Project</th>
+			<th>Location</th>
+			<th>Doc. code</th>
+			<th>E-copy</th>
+			<th>Title</th>
+			<th>Status</th>
+			<th>Sign off date</th>
+		</thead>
+		{% for studyplan in studyplans %}
+		<tr>
+			<td>{{ studyplan.author }}</td>
+			<td>{{ studyplan.project }}</td>
+			<td>{{ studyplan.location }}</td>
+			<td>{{ studyplan.document_code }}</td>
+			<td>{{ studyplan.efile }}</td>
+			<td>{{ studyplan.title }}</td>
+			<td>{{ studyplan.status }}</td>
+			<td>{{ studyplan.sign_date }}</td>
+			<td><a href="{{ studyplan.id }}">Details</a> | <a href="edit/{{ studyplan.id }}">Edit</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+	<a href="{% url 'studyplan-create' %}">Add new</a>
+{% endblock %}

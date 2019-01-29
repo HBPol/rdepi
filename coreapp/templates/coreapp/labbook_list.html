@@ -1,0 +1,42 @@
+{% extends 'coreapp/base_generic.html' %}
+{% block content %}
+	<h1>{{ page_title }}</h1>
+	<hr>
+	<table>
+		<thead>
+			<th>Author</th>
+			<th>Project</th>
+			<th>Location</th>
+			<th>Doc. code</th>
+			<th>E-copy</th>
+			
+			<th>Content description</th>
+			<th>Date started</th>
+			<th>Date finished</th>
+			<th>Issue date</th>
+			<th>Index added to project file</th>
+			<th>Index num. pages</th>
+		</thead>
+		{% for labbook in labbooks %}
+		<tr>
+			<td>{{ labbook.author }}</td>
+			<td>{{ labbook.project }}</td>
+			<td>{{ labbook.location }}</td>
+			<td>{{ labbook.document_code }}</td>
+			<td>{{ labbook.efile }}</td>
+			
+			<td>{{ labbook.content_descr }}</td>
+			<td>{{ labbook.date_started }}</td>
+			<td>{{ labbook.date_finished }}</td>
+			<td>{{ labbook.date_issued }}</td>
+			<td>{{ labbook.index_added }}</td>
+			<td>{{ labbook.index_num_pages }}</td>
+			
+			
+			<td><a href="{{ labbook.id }}">Details</a> | <a href="edit/{{ labbook.id }}">Edit</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+	<a href="{% url 'labbook-create' %}">Add new</a>
+{% endblock %}
