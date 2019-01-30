@@ -41,6 +41,7 @@ class Document(models.Model):
     # Similarly, for the prototype only, it is assumed each document belongs to one project only (many-to-one)
     # TODO: 'project' is set here as many-to-one here, but consider many-to-many in the final version, because some documents may be associated with more than one project (e.g. raw data files or labbooks ...)
     # project = models.ManyToManyField(Project, verbose_name="Associated project(s)")
+    title = models.TextField("Document title")
     project = models.ForeignKey(Project, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Associated project")
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Hard copy location")
     document_code = models.CharField("Document code (e.g. study plan, report... )", max_length=3, choices=DOCUMENT_CODE, default='OTH')
@@ -49,7 +50,6 @@ class Document(models.Model):
         abstract = True
 
 class StudyPlan(Document):
-    title = models.TextField("Study plan title")
     status = models.CharField("Document status", max_length=3, choices=DOCUMENT_STATUS, default='PEN')
     document_code = 'SP'
     sign_date = models.DateField("Sign-off date", null=True, blank=True)
@@ -58,7 +58,6 @@ class StudyPlan(Document):
 
 class Report(Document):
     study_plan = models.ForeignKey(StudyPlan, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Study plan") # It is assumed each report has one study plan only (many-to-one)
-    title = models.TextField("Report title")
     status = models.CharField("Document status", max_length=3, choices=DOCUMENT_STATUS, default='PEN')
     document_code = 'R'
     sign_date = models.DateField("Sign-off date", null=True, blank=True)
@@ -66,7 +65,6 @@ class Report(Document):
         return self.title
     
 class RelatedFile(Document):
-    content_descr = models.TextField("Content description", null=True, blank=True)
     date_started = models.DateField("Date started", null=True, blank=True)
     date_finished = models.DateField("Date finished", null=True, blank=True)
     date_archived = models.DateField("Date archived", null=True, blank=True)
@@ -77,7 +75,6 @@ class RelatedFile(Document):
         return self.content_descr
 
 class LabBook(Document):
-    content_descr = models.TextField("Content description", null=True, blank=True)
     date_started = models.DateField("Date started", null=True, blank=True)
     date_finished = models.DateField("Date finished", null=True, blank=True)
     date_issued = models.DateField("Issue date")

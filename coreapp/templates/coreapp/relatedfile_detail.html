@@ -2,15 +2,17 @@
 {% block content %}
 	<h1>{{ page_title }}</h1>
 	<hr>
-	<p>Content description: {{ relatedfile.content_descr }}</p>
+	<p>Content description: {{ relatedfile.title }}</p>
 	<p>Author: {{relatedfile.author}}</p>
 	<p>Project: {{ relatedfile.project.prefix }}</p>
-	<p>Electronic copy: {{ relatedfile.efile }}</p>
 	<p>Location: {{ relatedfile.location }}</p>
-	<hr>
+	<p>Electronic copy: {{ relatedfile.efile }}</p>
+	
 	<p>Date started: {{ relatedfile.date_started }}</p>
 	<p>Date finished: {{ relatedfile.date_finished }}</p>
 	<p>Date archived: {{ relatedfile.date_archived }}</p>
+	<p>Alias: {{ relatedfile.alias }}</p>
+	<p>Volume num.: {{ relatedfile.vol_num }}</p>
 	<p>Sign-off date: {{ relatedfile.sign_date }}</p>
 	
 {% endblock %}

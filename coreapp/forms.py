@@ -19,17 +19,17 @@ class StudyPlanForm(ModelForm):
 class ReportForm(ModelForm):
     class Meta:
         model = Report
-        fields = ['author', 'project', 'location', 'efile', 'study_plan', 'title', 'status', 'sign_date']
+        fields = ['author', 'project', 'location', 'efile', 'title', 'study_plan', 'status', 'sign_date']
         
 class RelatedFileForm(ModelForm):
     class Meta:
         model = RelatedFile
-        fields = ['author', 'project', 'location', 'efile', 'content_descr', 'date_started', 'date_finished', 'date_archived', 'alias', 'vol_num']
+        fields = ['author', 'project', 'location', 'efile', 'title', 'date_started', 'date_finished', 'date_archived', 'alias', 'vol_num']
 
 class LabBookForm(ModelForm):
     class Meta:
         model = LabBook
-        fields = ['author', 'project', 'location', 'efile', 'content_descr', 'date_started', 'date_finished', 'date_issued', 'index_added', 'index_num_pages']
+        fields = ['author', 'project', 'location', 'efile', 'title', 'date_started', 'date_finished', 'date_issued', 'index_added', 'index_num_pages']
 
 
 
