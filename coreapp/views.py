@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from coreapp.models import User, Project, Location, StudyPlan, Report, RelatedFile, LabBook
 from coreapp.forms import ProjectForm, LocationForm, StudyPlanForm, ReportForm, RelatedFileForm, LabBookForm
-from django.views.generic.detail import DetailView
 
 def home(request):
     context = {'page_title': 'R&D EPI | Home'}
