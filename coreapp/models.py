@@ -36,13 +36,12 @@ class Location(models.Model):
         return self.name
 
 class Document(models.Model):
-    # It is assumed each document has one author only (many-to-one)
+    # It is assumed each document has one author only (many-to-one).
+    # TODO: consider many-to-many, as in reality some documents may have more than one author (e.g. project related files)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Main author")
-    # Similarly, for the prototype only, it is assumed each document belongs to one project only (many-to-one)
-    # TODO: 'project' is set here as many-to-one here, but consider many-to-many in the final version, because some documents may be associated with more than one project (e.g. raw data files or labbooks ...)
-    # project = models.ManyToManyField(Project, verbose_name="Associated project(s)")
+    # Some documents may be related to more than one project, so many-to-many is best
+    project = models.ManyToManyField(Project, verbose_name="Associated project(s)")
     title = models.TextField("Document title")
-    project = models.ForeignKey(Project, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Associated project")
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Hard copy location")
     document_code = models.CharField("Document code (e.g. study plan, report... )", max_length=3, choices=DOCUMENT_CODE, default='OTH')
     efile = models.FileField("Scanned copy", upload_to='uploads/', null=True, blank=True)
@@ -57,7 +56,8 @@ class StudyPlan(Document):
         return self.title
 
 class Report(Document):
-    study_plan = models.ForeignKey(StudyPlan, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Study plan") # It is assumed each report has one study plan only (many-to-one)
+    # Some report may be related to more than one study plan (many-to-many)
+    study_plan = models.ManyToManyField(StudyPlan, verbose_name="Study plan(s)") # It is assumed each report has one study plan only (many-to-one)
     status = models.CharField("Document status", max_length=3, choices=DOCUMENT_STATUS, default='PEN')
     document_code = 'R'
     sign_date = models.DateField("Sign-off date", null=True, blank=True)
