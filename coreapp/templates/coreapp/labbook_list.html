@@ -8,8 +8,7 @@
 			<th>Project</th>
 			<th>Location</th>
 			<th>Doc. code</th>
-			<th>E-copy</th>
-			
+			<th>E-copy</th>	
 			<th>Content description</th>
 			<th>Date started</th>
 			<th>Date finished</th>
@@ -23,8 +22,7 @@
 			<td>{{ labbook.project }}</td>
 			<td>{{ labbook.location }}</td>
 			<td>{{ labbook.document_code }}</td>
-			<td>{{ labbook.efile }}</td>
-			
+			<td><a href="{{ MEDIA_URL }}{{ labbook.efile }}">{{ labbook.efile }}</a></td>
 			<td>{{ labbook.content_descr }}</td>
 			<td>{{ labbook.date_started }}</td>
 			<td>{{ labbook.date_finished }}</td>

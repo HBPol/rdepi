@@ -25,3 +25,10 @@ urlpatterns = [
     path('coreapp/', include('coreapp.urls')),
     path('admin/', admin.site.urls, name='admin'),
 ]
+"""
+In the development server user uploaded files (media) can be served using django.contrib.staticfiles.views.serve() view.
+To access the MEDIA_URL in template django.template.context_processors.media must be added to the context_processors
+inside the TEMPLATES config (in settings.py).
+"""
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -9,7 +9,6 @@
 			<th>Location</th>
 			<th>Doc. code</th>
 			<th>E-copy</th>
-			
 			<th>Content description</th>
 			<th>Date started</th>
 			<th>Date finished</th>
@@ -23,8 +22,7 @@
 			<td>{{ relatedfile.project }}</td>
 			<td>{{ relatedfile.location }}</td>
 			<td>{{ relatedfile.document_code }}</td>
-			<td>{{ relatedfile.efile }}</td>
-			
+			<td><a href="{{ MEDIA_URL }}{{ relatedfile.efile }}">{{ relatedfile.efile }}</a></td>
 			<td>{{ relatedfile.content_descr }}</td>
 			<td>{{ relatedfile.date_started }}</td>
 			<td>{{ relatedfile.date_finished }}</td>
