@@ -4,10 +4,9 @@
 	<hr>
 	<p>Content description: {{ labbook.title }}</p>
 	<p>Author: {{ labbook.author }}</p>
-	<p>Project: {{ labbook.project.prefix }}</p>
+	<p>Project(s): {% for project in labbook.project.all %}{{ project }}<br>{% endfor %}</p>
 	<p>Location: {{ labbook.location }}</p>
 	<p>Electronic copy: {{ labbook.efile }}</p>
-
 	<p>Date started: {{ labbook.date_started }}</p>
 	<p>Date finished: {{ labbook.date_finished }}</p>
 	<p>Date issued: {{ labbook.date_issued }}</p>

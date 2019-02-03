@@ -4,10 +4,9 @@
 	<hr>
 	<p>Title: {{ studyplan.title }}</p>
 	<p>Author: {{studyplan.author}}</p>
-	<p>Project: {{ studyplan.project.prefix }}</p>
+	<p>Project(s): {% for project in studyplan.project.all %}{{ project }}<br>{% endfor %}</p>
 	<p>Location: {{ studyplan.location }}</p>
 	<p>Electronic copy: {{ studyplan.efile }}</p>
-	
 	<p>Status: {{ studyplan.status }}</p>
 	<p>Sign-off date: {{ studyplan.sign_date }}</p>
 {% endblock %}

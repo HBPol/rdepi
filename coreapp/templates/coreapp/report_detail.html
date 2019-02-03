@@ -4,11 +4,10 @@
 	<hr>
 	<p>Title: {{ report.title }}</p>
 	<p>Author: {{report.author}}</p>
-	<p>Project: {{ report.project.prefix }}</p>
+	<p>Project(s): {% for project in report.project.all %}{{ project }}<br>{% endfor %}</p>
 	<p>Location: {{ report.location }}</p>
 	<p>Electronic copy: {{ report.efile }}</p>
-	
-	<p>Study plan: {{ report.study_plan }}</p>
+	<p>Study plan(s): {% for studyplan in report.study_plan.all %}{{ studyplan }}<br>{% endfor %}</p>
 	<p>Status: {{ report.status }}</p>
 	<p>Sign-off date: {{ report.sign_date }}</p>
 {% endblock %}

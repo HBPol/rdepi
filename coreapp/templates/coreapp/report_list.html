@@ -5,11 +5,9 @@
 	<table>
 		<thead>
 			<th>Author</th>
-			<th>Project</th>
 			<th>Location</th>
 			<th>Doc. code</th>
 			<th>E-copy</th>
-			<th>Study plan</th>
 			<th>Title</th>
 			<th>Status</th>
 			<th>Sign off date</th>
@@ -17,11 +15,9 @@
 		{% for report in reports %}
 		<tr>
 			<td>{{ report.author }}</td>
-			<td>{{ report.project }}</td>
 			<td>{{ report.location }}</td>
 			<td>{{ report.document_code }}</td>
 			<td><a href="{{ MEDIA_URL }}{{ report.efile }}">{{ report.efile }}</a></td>
-			<td>{{ report.study_plan }}</td>
 			<td>{{ report.title }}</td>
 			<td>{{ report.status }}</td>
 			<td>{{ report.sign_date }}</td>

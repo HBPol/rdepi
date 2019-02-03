@@ -5,7 +5,6 @@
 	<table>
 		<thead>
 			<th>Author</th>
-			<th>Project</th>
 			<th>Location</th>
 			<th>Doc. code</th>
 			<th>E-copy</th>
@@ -16,7 +15,6 @@
 		{% for studyplan in studyplans %}
 		<tr>
 			<td>{{ studyplan.author }}</td>
-			<td>{{ studyplan.project }}</td>
 			<td>{{ studyplan.location }}</td>
 			<td>{{ studyplan.document_code }}</td>
 			<td><a href="{{ MEDIA_URL }}{{ studyplan.efile }}">{{ studyplan.efile }}</a></td>

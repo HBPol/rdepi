@@ -5,7 +5,6 @@
 	<table>
 		<thead>
 			<th>Author</th>
-			<th>Project</th>
 			<th>Location</th>
 			<th>Doc. code</th>
 			<th>E-copy</th>	
@@ -19,18 +18,15 @@
 		{% for labbook in labbooks %}
 		<tr>
 			<td>{{ labbook.author }}</td>
-			<td>{{ labbook.project }}</td>
 			<td>{{ labbook.location }}</td>
 			<td>{{ labbook.document_code }}</td>
 			<td><a href="{{ MEDIA_URL }}{{ labbook.efile }}">{{ labbook.efile }}</a></td>
-			<td>{{ labbook.content_descr }}</td>
+			<td>{{ labbook.title }}</td>
 			<td>{{ labbook.date_started }}</td>
 			<td>{{ labbook.date_finished }}</td>
 			<td>{{ labbook.date_issued }}</td>
 			<td>{{ labbook.index_added }}</td>
 			<td>{{ labbook.index_num_pages }}</td>
-			
-			
 			<td><a href="{{ labbook.id }}">Details</a> | <a href="edit/{{ labbook.id }}">Edit</a></td>
 		</tr>
 		{% endfor %}
