@@ -6,7 +6,7 @@
 	<p>Author: {{relatedfile.author}}</p>
 	<p>Project(s): {% for project in relatedfile.project.all %}{{ project }}<br>{% endfor %}</p>
 	<p>Location: {{ relatedfile.location }}</p>
-	<p>Electronic copy: {{ relatedfile.efile }}</p>
+	<p>Electronic copy: <a href="{{ MEDIA_URL }}{{ relatedfile.efile }}">{{ relatedfile.efile }}</a></p>
 	<p>Date started: {{ relatedfile.date_started }}</p>
 	<p>Date finished: {{ relatedfile.date_finished }}</p>
 	<p>Date archived: {{ relatedfile.date_archived }}</p>

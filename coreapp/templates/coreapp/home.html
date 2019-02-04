@@ -1,9 +1,5 @@
 {% extends 'coreapp/base_generic.html' %}
 {% block content %}
-<a href="{% url 'project-list' %}">Projects</a>
-<a href="{% url 'location-list' %}">Locations</a>
-<a href="{% url 'studyplan-list' %}">Study plans</a>
-<a href="{% url 'report-list' %}">Reports</a>
-<a href="{% url 'relatedfile-list' %}">Project-related files</a>
-<a href="{% url 'labbook-list' %}">Lab notebooks</a>
+	<h1>{{ page_title }}</h1>
+	<hr>
 {% endblock %}

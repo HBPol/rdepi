@@ -6,7 +6,7 @@
 	<p>Author: {{report.author}}</p>
 	<p>Project(s): {% for project in report.project.all %}{{ project }}<br>{% endfor %}</p>
 	<p>Location: {{ report.location }}</p>
-	<p>Electronic copy: {{ report.efile }}</p>
+	<p>Electronic copy: <a href="{{ MEDIA_URL }}{{ report.efile }}">{{ report.efile }}</a></p>
 	<p>Study plan(s): {% for studyplan in report.study_plan.all %}{{ studyplan }}<br>{% endfor %}</p>
 	<p>Status: {{ report.status }}</p>
 	<p>Sign-off date: {{ report.sign_date }}</p>

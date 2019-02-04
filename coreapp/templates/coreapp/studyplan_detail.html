@@ -6,7 +6,7 @@
 	<p>Author: {{studyplan.author}}</p>
 	<p>Project(s): {% for project in studyplan.project.all %}{{ project }}<br>{% endfor %}</p>
 	<p>Location: {{ studyplan.location }}</p>
-	<p>Electronic copy: {{ studyplan.efile }}</p>
+	<p>Electronic copy: <a href="{{ MEDIA_URL }}{{ studyplan.efile }}">{{ studyplan.efile }}</a></p>
 	<p>Status: {{ studyplan.status }}</p>
 	<p>Sign-off date: {{ studyplan.sign_date }}</p>
 {% endblock %}

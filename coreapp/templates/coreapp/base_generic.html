@@ -8,8 +8,20 @@
 	</head>
 <body>
 	<p><a href="{% url 'home' %}">Home</a> | <a href="{% url 'admin:index' %}">Admin</a></p>
+	<a href="{% url 'project-list' %}">Projects</a> | 
+	<a href="{% url 'location-list' %}">Locations</a> | 
+	<a href="{% url 'studyplan-list' %}">Study plans</a> | 
+	<a href="{% url 'report-list' %}">Reports</a> | 
+	<a href="{% url 'relatedfile-list' %}">Project-related files</a> | 
+	<a href="{% url 'labbook-list' %}">Lab notebooks</a> | 
 	{% block content %}
 				
 	{% endblock %}
+	
+	{% block footer %}
+	<hr>
+	<p>This is the page footer...</p>
+	{% endblock %}
+	
 </body>
 </html>
