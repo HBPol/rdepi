@@ -57,7 +57,7 @@ ROOT_URLCONF = 'rdepi.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,3 +130,7 @@ AUTH_USER_MODEL = 'coreapp.User'
 # Setting to allow file uploading
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# This is to redirect to a specified url (home). The default redirects to '/accounts/profile/'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = '/'

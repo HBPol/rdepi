@@ -21,9 +21,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='coreapp/')),
+    path('', RedirectView.as_view(url='/accounts/login/')),
     path('coreapp/', include('coreapp.urls')),
     path('admin/', admin.site.urls, name='admin'),
+    # This is Django's default authentication urls
+    path ('accounts/', include('django.contrib.auth.urls')),
 ]
 """
 In the development server user uploaded files (media) can be served using django.contrib.staticfiles.views.serve() view.
