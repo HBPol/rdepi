@@ -4,32 +4,33 @@ from coreapp.models import Project, Location, StudyPlan, Report, RelatedFile, La
 class ProjectForm(ModelForm):
     class Meta:
         model = Project
-        fields = ['name', 'prefix', 'leader']
+        fields = '__all__'
         
 class LocationForm(ModelForm):
     class Meta:
         model = Location
-        fields = ['name', 'room_num']
+        fields = '__all__'
 
 class StudyPlanForm(ModelForm):
     class Meta:
         model = StudyPlan
-        fields = ['author', 'project', 'location', 'efile', 'title', 'status', 'sign_date']
+        fields = '__all__'
 
 class ReportForm(ModelForm):
     class Meta:
         model = Report
-        fields = ['author', 'project', 'location', 'efile', 'title', 'study_plan', 'status', 'sign_date']
+        fields = '__all__'
         
 class RelatedFileForm(ModelForm):
     class Meta:
         model = RelatedFile
-        fields = ['author', 'project', 'location', 'efile', 'title', 'date_started', 'date_finished', 'date_archived', 'alias', 'vol_num']
+        fields = '__all__'
 
 class LabBookForm(ModelForm):
     class Meta:
         model = LabBook
-        fields = ['author', 'project', 'location', 'efile', 'title', 'date_started', 'date_finished', 'date_issued', 'index_added', 'index_num_pages']
+        fields = '__all__'
+        #exclude = ['date_finished']
 
 
 

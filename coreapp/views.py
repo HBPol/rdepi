@@ -134,7 +134,7 @@ def report_list(request):
     reports = Report.objects.all()
     context = {'reports': reports, 'page_title': 'R&D EPI | Reports'}
     return render(request, 'coreapp/report_list.html', context)
-
+@login_required
 def report_detail(request, id):
     report = Report.objects.get(id=id)
     context = {'report': report, 'page_title': 'R&D EPI | Report details'}
