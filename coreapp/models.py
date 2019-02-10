@@ -36,11 +36,8 @@ class Location(models.Model):
         return self.name
 
 class Document(models.Model):
-    # It is assumed each document has one author only (many-to-one).
-    # TODO: consider many-to-many, as in reality some documents may have more than one author (e.g. project related files)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Main author")
-    # Some documents may be related to more than one project, so many-to-many is best
-    project = models.ManyToManyField(Project, verbose_name="Associated project(s)")
+    project = models.ForeignKey(Project, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Associated project")
     title = models.TextField("Document title")
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Hard copy location")
     document_code = models.CharField("Document code (e.g. study plan, report... )", max_length=3, choices=DOCUMENT_CODE, default='OTH')
@@ -65,6 +62,10 @@ class Report(Document):
         return self.title
     
 class RelatedFile(Document):
+    # Default is set to many-to-one, but related files may have one or more authors (raw data file where various staff add their documents).
+    author = models.ManyToManyField(settings.AUTH_USER_MODEL, verbose_name="Author(s)")
+    # Default is set to many-to-one, but related files may belong to one or more projects
+    project = models.ManyToManyField(Project, verbose_name="Associated project(s)")
     date_started = models.DateField("Date started", null=True, blank=True)
     date_finished = models.DateField("Date finished", null=True, blank=True)
     date_archived = models.DateField("Date archived", null=True, blank=True)
@@ -75,6 +76,8 @@ class RelatedFile(Document):
         return self.content_descr
 
 class LabBook(Document):
+    # Default is set to many-to-one, but lab books may belong to one or more projects.
+    project = models.ManyToManyField(Project, verbose_name="Associated project(s)")
     date_started = models.DateField("Date started", null=True, blank=True)
     date_finished = models.DateField("Date finished", null=True, blank=True)
     date_issued = models.DateField("Issue date")
