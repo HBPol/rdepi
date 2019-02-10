@@ -3,3 +3,4 @@
 __pycache__/
 /uploads/
 /media/
+/.dbeaver-data-sources.xml

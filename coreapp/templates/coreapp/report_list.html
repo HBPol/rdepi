@@ -4,21 +4,24 @@
 	<hr>
 	<table>
 		<thead>
-			<th>Author</th>
-			<th>Location</th>
-			<th>Doc. code</th>
-			<th>E-copy</th>
+			<th>Doc. number</th>
 			<th>Title</th>
+			<th>E-copy</th>
+			<th>Author</th>
 			<th>Status</th>
 			<th>Sign off date</th>
+			<th>Actions</th>
 		</thead>
 		{% for report in reports %}
 		<tr>
+			<td>{{ report.project.prefix }}-{{ report.id }}-{{ report.document_code }}</td>
+			<td>{{ report.title|truncatechars:75 }}</td>
+			<td>
+			{% if report.efile %}
+				<a href="{{ MEDIA_URL }}{{ report.efile }}">e-copy</a>
+			{% endif %}
+			</td>
 			<td>{{ report.author }}</td>
-			<td>{{ report.location }}</td>
-			<td>{{ report.document_code }}</td>
-			<td><a href="{{ MEDIA_URL }}{{ report.efile }}">{{ report.efile }}</a></td>
-			<td>{{ report.title }}</td>
 			<td>{{ report.status }}</td>
 			<td>{{ report.sign_date }}</td>
 			<td><a href="{{ report.id }}">Details</a> | <a href="edit/{{ report.id }}">Edit</a></td>

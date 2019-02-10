@@ -3,7 +3,7 @@
 	<h1>{{ page_title }}</h1>
 	<hr>
 	<p>Content description: {{ relatedfile.title }}</p>
-	<p>Author: {{relatedfile.author}}</p>
+	<p>Author(s): {% for author in relatedfile.author.all %}{{author}}<br>{% endfor %}</p>
 	<p>Project(s): {% for project in relatedfile.project.all %}{{ project }}<br>{% endfor %}</p>
 	<p>Location: {{ relatedfile.location }}</p>
 	<p>Electronic copy: <a href="{{ MEDIA_URL }}{{ relatedfile.efile }}">{{ relatedfile.efile }}</a></p>

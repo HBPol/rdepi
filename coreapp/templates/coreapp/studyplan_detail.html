@@ -3,8 +3,8 @@
 	<h1>{{ page_title }}</h1>
 	<hr>
 	<p>Title: {{ studyplan.title }}</p>
-	<p>Author: {{studyplan.author}}</p>
-	<p>Project(s): {% for project in studyplan.project.all %}{{ project }}<br>{% endfor %}</p>
+	<p>Author: {{ studyplan.author }}</p>
+	<p>Project: {{ studyplan.project }}</p>
 	<p>Location: {{ studyplan.location }}</p>
 	<p>Electronic copy: <a href="{{ MEDIA_URL }}{{ studyplan.efile }}">{{ studyplan.efile }}</a></p>
 	<p>Status: {{ studyplan.status }}</p>

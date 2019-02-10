@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<data-sources>
-	<data-source id="sqlite_jdbc-167e73f5a4a-5a3ab5825062ff83" provider="generic" driver="sqlite_jdbc" name="SQLite - db.sqlite3 - RDEPI" save-password="true" show-system-objects="true" show-util-objects="true" read-only="false">
-		<connection server="" database="/home/hector/code/e-project-index/e-project-index-app/rdepi/db.sqlite3" url="jdbc:sqlite:/home/hector/code/e-project-index/e-project-index-app/rdepi/db.sqlite3" type="dev"/>
-	</data-source>
-	<filters/>
-</data-sources>

@@ -4,21 +4,24 @@
 	<hr>
 	<table>
 		<thead>
-			<th>Author</th>
-			<th>Location</th>
-			<th>Doc. code</th>
-			<th>E-copy</th>
+			<th>Doc. number</th>
 			<th>Title</th>
+			<th>E-copy</th>
+			<th>Author</th>
 			<th>Status</th>
 			<th>Sign off date</th>
+			<th>Actions</th>
 		</thead>
 		{% for studyplan in studyplans %}
 		<tr>
+			<td>{{ studyplan.project.prefix }}-{{ studyplan.id }}-{{ studyplan.document_code }}</td>
+			<td>{{ studyplan.title|truncatechars:75 }}</td>
+			<td>
+			{% if studyplan.efile %}
+				<a href="{{ MEDIA_URL }}{{ studyplan.efile }}">e-copy</a>
+			{% endif %}
+			</td>
 			<td>{{ studyplan.author }}</td>
-			<td>{{ studyplan.location }}</td>
-			<td>{{ studyplan.document_code }}</td>
-			<td><a href="{{ MEDIA_URL }}{{ studyplan.efile }}">{{ studyplan.efile }}</a></td>
-			<td>{{ studyplan.title }}</td>
 			<td>{{ studyplan.status }}</td>
 			<td>{{ studyplan.sign_date }}</td>
 			<td><a href="{{ studyplan.id }}">Details</a> | <a href="edit/{{ studyplan.id }}">Edit</a></td>
