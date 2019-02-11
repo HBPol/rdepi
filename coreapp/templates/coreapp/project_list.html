@@ -14,7 +14,7 @@
 			<td>{{ project.name }}</td>
 			<td>{{ project.prefix }}</td>
 			<td>{{ project.leader }}</td>
-			<td><a href="{{ project.id }}">Details</a> | <a href="edit/{{ project.id }}">Edit</a> | <a href="">Go to documents</a></td>
+			<td><a href="{% url 'project-detail' project.id %}">Details</a> | <a href="{% url 'project-edit' project.id %}">Edit</a> | <a href="{% url 'studyplan-list-project' project.id %}">Go to documents</a></td>
 		</tr>
 		{% endfor %}
 	</table>

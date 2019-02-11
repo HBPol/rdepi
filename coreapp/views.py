@@ -96,6 +96,13 @@ def studyplan_list(request):
     context = {'studyplans': studyplans, 'page_title': 'R&D EPI | Study plans'}
     return render(request, 'coreapp/studyplan_list.html', context)
 @login_required
+def studyplan_list_project(request, id):
+    studyplans = StudyPlan.objects.filter(project_id=id)
+    context = {'studyplans': studyplans, 'page_title': 'R&D EPI | Study plans'}
+    return render(request, 'coreapp/studyplan_list.html', context)
+
+
+@login_required
 def studyplan_detail(request, id):
     studyplan = StudyPlan.objects.get(id=id)
     context = {'studyplan': studyplan, 'page_title': 'R&D EPI | Study Plan details'}

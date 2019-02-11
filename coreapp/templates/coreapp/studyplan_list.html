@@ -24,7 +24,7 @@
 			<td>{{ studyplan.author }}</td>
 			<td>{{ studyplan.status }}</td>
 			<td>{{ studyplan.sign_date }}</td>
-			<td><a href="{{ studyplan.id }}">Details</a> | <a href="edit/{{ studyplan.id }}">Edit</a></td>
+			<td><a href="{% url 'studyplan-detail' studyplan.id %}">Details</a> | <a href="{% url 'studyplan-edit' studyplan.id %}">Edit</a></td>
 		</tr>
 		{% endfor %}
 	</table>

@@ -19,6 +19,7 @@ urlpatterns = [
     path('location/delete/<int:id>', views.location_delete, name='location-delete'),
     
     path('studyplan/', views.studyplan_list, name='studyplan-list'),
+    path('studyplan-project/<int:id>', views.studyplan_list_project, name='studyplan-list-project'),
     path('studyplan/create/', views.studyplan_create, name='studyplan-create'),
     path('studyplan/edit/<int:id>', views.studyplan_edit, name='studyplan-edit'),
     path('studyplan/<int:id>', views.studyplan_detail, name='studyplan-detail'),
