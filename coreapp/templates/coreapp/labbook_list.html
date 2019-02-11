@@ -30,7 +30,7 @@
 			<td>{{ labbook.date_finished }}</td>
 			<td>{{ labbook.index_added }}</td>
 			<td>{{ labbook.index_num_pages }}</td>
-			<td><a href="{{ labbook.id }}">Details</a> | <a href="edit/{{ labbook.id }}">Edit</a></td>
+			<td><a href="{% url 'labbook-detail' labbook.id %}">Details</a> | <a href="{% url 'labbook-edit' labbook.id %}">Edit</a></td>
 		</tr>
 		{% endfor %}
 	</table>

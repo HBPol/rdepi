@@ -24,7 +24,7 @@
 			<td>{{ report.author }}</td>
 			<td>{{ report.status }}</td>
 			<td>{{ report.sign_date }}</td>
-			<td><a href="{{ report.id }}">Details</a> | <a href="edit/{{ report.id }}">Edit</a></td>
+			<td><a href="{% url 'report-detail' report.id %}">Details</a> | <a href="{% url 'report-edit' report.id %}">Edit</a></td>
 		</tr>
 		{% endfor %}
 	</table>
