@@ -16,6 +16,7 @@ def project_list(request):
     projects = Project.objects.all()
     context = {'projects': projects, 'page_title': 'R&D EPI | Projects'}
     return render(request, 'coreapp/project_list.html', context)
+
 @login_required
 def project_detail(request, id):
     project = Project.objects.get(id=id)
@@ -95,12 +96,6 @@ def studyplan_list(request):
     studyplans = StudyPlan.objects.all()
     context = {'studyplans': studyplans, 'page_title': 'R&D EPI | Study plans'}
     return render(request, 'coreapp/studyplan_list.html', context)
-@login_required
-def studyplan_list_project(request, id):
-    studyplans = StudyPlan.objects.filter(project_id=id)
-    context = {'studyplans': studyplans, 'page_title': 'R&D EPI | Study plans'}
-    return render(request, 'coreapp/studyplan_list.html', context)
-
 
 @login_required
 def studyplan_detail(request, id):
@@ -251,5 +246,21 @@ def labbook_update(request, id):
 @login_required
 def labbook_delete(request, id):
     pass
+
+# List views filtered by project
+@login_required
+def project_studyplan_list(request, id):
+    studyplans = StudyPlan.objects.filter(project_id=id)
+    project = Project.objects.get(id=id)
+    context = {'project': project, 'studyplans': studyplans, 'page_title': 'R&D EPI | Study plans'}
+    return render(request, 'coreapp/project_studyplan_list.html', context)
+def project_report_list(request, id):
+    pass
+def project_relatedfile_list(request, id):
+    pass
+def project_labbook_list(request, id):
+    pass
+
+
 
 
