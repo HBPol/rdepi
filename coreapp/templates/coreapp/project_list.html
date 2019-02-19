@@ -17,7 +17,9 @@
 			<td>
 				<a href="{% url 'project-detail' project.id %}">Details</a> | 
 				<a href="{% url 'project-edit' project.id %}">Edit</a> |
-				<a href="{% url 'project-index' project.id %}">Go to project index</a>
+				<!-- TODO: the index view may not be necessary, just redirect to one of the docs list (e.g. study plan list)...  -->
+				<!-- <a href="{% url 'project-index' project.id %}">Go to project index</a> -->
+				<a href="{% url 'project-studyplan-list' project.id %}">Go to project index</a>
 				
 			</td>
 		</tr>
