@@ -1,0 +1,29 @@
+
+	<table>
+		<thead>
+			<th>Doc. number</th>
+			<th>Title</th>
+			<th>E-copy</th>
+			<th>Author</th>
+			<th>Status</th>
+			<th>Sign off date</th>
+			<th>Actions</th>
+		</thead>
+		{% for report in reports %}
+		<tr>
+			<td>{{ report.project.prefix }}-{{ report.id }}-{{ report.document_code }}</td>
+			<td>{{ report.title|truncatechars:75 }}</td>
+			<td>
+			{% if report.efile %}
+				<a href="{{ MEDIA_URL }}{{ report.efile }}">e-copy</a>
+			{% endif %}
+			</td>
+			<td>{{ report.author }}</td>
+			<td>{{ report.status }}</td>
+			<td>{{ report.sign_date }}</td>
+			<td><a href="{% url 'report-detail' report.id %}">Details</a> | <a href="{% url 'report-edit' report.id %}">Edit</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+	<a href="{% url 'report-create' %}">Add new</a>

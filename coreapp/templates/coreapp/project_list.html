@@ -16,7 +16,8 @@
 			<td>{{ project.leader }}</td>
 			<td>
 				<a href="{% url 'project-detail' project.id %}">Details</a> | 
-				<a href="{% url 'project-edit' project.id %}">Edit</a>
+				<a href="{% url 'project-edit' project.id %}">Edit</a> |
+				<a href="{% url 'project-index' project.id %}">Go to project index</a>
 				
 			</td>
 		</tr>

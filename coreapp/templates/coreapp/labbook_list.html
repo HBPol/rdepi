@@ -1,39 +1,4 @@
 {% extends 'coreapp/base_generic.html' %}
 {% block content %}
-	<h1>{{ page_title }}</h1>
-	<hr>
-	<table>
-		<thead>
-			<th>Doc. number</th>	
-			<th>Content description</th>
-			<th>E-copy</th>
-			<th>Author</th>
-			<th>Issue date</th>
-			<th>Date started</th>
-			<th>Date finished</th>
-			<th>Index added to project file</th>
-			<th>Index num. pages</th>
-			<th>Actions</th>
-		</thead>
-		{% for labbook in labbooks %}
-		<tr>
-			<td>{{ labbook.document_code }}-{{ labbook.id }}</td>
-			<td>{{ labbook.title|truncatechars:75 }}</td>
-			<td>
-			{% if labbook.efile %}
-				<a href="{{ MEDIA_URL }}{{ labbook.efile }}">e-copy</a>
-			{% endif %}
-			</td>
-			<td>{{ labbook.author }}</td>
-			<td>{{ labbook.date_issued }}</td>
-			<td>{{ labbook.date_started }}</td>
-			<td>{{ labbook.date_finished }}</td>
-			<td>{{ labbook.index_added }}</td>
-			<td>{{ labbook.index_num_pages }}</td>
-			<td><a href="{% url 'labbook-detail' labbook.id %}">Details</a> | <a href="{% url 'labbook-edit' labbook.id %}">Edit</a></td>
-		</tr>
-		{% endfor %}
-	</table>
-	<br>
-	<a href="{% url 'labbook-create' %}">Add new</a>
+	{% include 'coreapp/labbook_list_core.html' %}
 {% endblock %}

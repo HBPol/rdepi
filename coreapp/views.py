@@ -249,17 +249,34 @@ def labbook_delete(request, id):
 
 # List views filtered by project
 @login_required
+def project_index(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project': project, 'page_title': 'R&D EPI | Project index'}
+    return render(request, 'coreapp/project_index.html', context)
+@login_required
 def project_studyplan_list(request, id):
     studyplans = StudyPlan.objects.filter(project_id=id)
     project = Project.objects.get(id=id)
-    context = {'project': project, 'studyplans': studyplans, 'page_title': 'R&D EPI | Study plans'}
+    context = {'studyplans': studyplans, 'project': project, 'page_title': 'R&D EPI | Study plans'}
     return render(request, 'coreapp/project_studyplan_list.html', context)
+@login_required
 def project_report_list(request, id):
-    pass
+    reports = Report.objects.filter(project_id=id)
+    project = Project.objects.get(id=id)
+    context = {'reports': reports, 'project': project, 'page_title': 'R&D EPI | Reports'}
+    return render(request, 'coreapp/project_report_list.html', context)
+@login_required
 def project_relatedfile_list(request, id):
-    pass
+    relatedfiles = RelatedFile.objects.filter(project=id)
+    project = Project.objects.get(id=id)
+    context = {'relatedfiles': relatedfiles, 'project': project, 'page_title': 'R&D EPI | Related files'}
+    return render(request, 'coreapp/project_relatedfile_list.html', context)
+@login_required
 def project_labbook_list(request, id):
-    pass
+    labbooks = LabBook.objects.filter(project=id)
+    project = Project.objects.get(id=id)
+    context = {'labbooks': labbooks, 'project': project, 'page_title': 'R&D EPI | Lab books'}
+    return render(request, 'coreapp/project_labbook_list.html', context)
 
 
 

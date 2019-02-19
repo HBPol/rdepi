@@ -4,11 +4,6 @@
 	<hr>
 	<p>Project name: {{ project.name }}</p>
 	<p>Project prefix: {{ project.prefix }}</p>
-	<p>Project leader: {{ project.leader }}</p>
-	
-	<a href="{% url 'project-studyplan-list' project.id %}">Study plans</a> |
-	<a href="{% url 'project-report-list' project.id %}">Reports</a> |
-	<a href="{% url 'project-relatedfile-list' project.id %}">Project-related files</a> |
-	<a href="{% url 'project-labbook-list' project.id %}">Lab notebooks</a>
-	
+	<p>Project leader: {{ project.leader }}</p>	
 {% endblock %}
+

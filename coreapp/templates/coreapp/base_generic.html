@@ -5,7 +5,8 @@
 	{% block title %}
 		<title>{{ page_title }}</title>
 	{% endblock %}
-	</head>
+</head>
+
 <body>
 	{% if user.is_authenticated %}
 	<p>User: {{ user.username }} ({{ user }}) | <a href="{% url 'logout'%}">Logout</a></p>
@@ -18,6 +19,10 @@
 	<a href="{% url 'relatedfile-list' %}">Project-related files</a> | 
 	<a href="{% url 'labbook-list' %}">Lab notebooks</a> | 
 	{% block content %}
+				
+	{% endblock %}
+	
+	{% block content_filtered %}
 				
 	{% endblock %}
 	

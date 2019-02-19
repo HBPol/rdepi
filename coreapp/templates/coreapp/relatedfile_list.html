@@ -1,37 +1,4 @@
 {% extends 'coreapp/base_generic.html' %}
 {% block content %}
-	<h1>{{ page_title }}</h1>
-	<hr>
-	<table>
-		<thead>
-			<th>Doc. number</th>
-			<th>Alias</th>
-			<th>Vol. No.</th>
-			<th>Content description</th>
-			<th>E-copy</th>
-			<th>Date started</th>
-			<th>Date finished</th>
-			<th>Date archived</th>
-			<th>Actions</th>
-		</thead>
-		{% for relatedfile in relatedfiles %}
-		<tr>
-			<td>{{ relatedfile.document_code }}-{{ relatedfile.id }}</td>
-			<td>{{ relatedfile.alias }}</td>
-			<td>{{ relatedfile.vol_num }}</td>
-			<td>{{ relatedfile.title|truncatechars:75 }}</td>
-			<td>
-			{% if relatedfile.efile %}
-				<a href="{{ MEDIA_URL }}{{ relatedfile.efile }}">e-copy</a>
-			{% endif %}
-			</td>
-			<td>{{ relatedfile.date_started }}</td>
-			<td>{{ relatedfile.date_finished }}</td>
-			<td>{{ relatedfile.date_archived }}</td>
-			<td><a href="{% url 'relatedfile-detail' relatedfile.id %}">Details</a> | <a href="{% url 'relatedfile-edit' relatedfile.id %}">Edit</a></td>
-		</tr>
-		{% endfor %}
-	</table>
-	<br>
-	<a href="{% url 'relatedfile-create' %}">Add new</a>
+	{% include 'coreapp/relatedfile_list_core.html' %}
 {% endblock %}
