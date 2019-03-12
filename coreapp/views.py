@@ -30,7 +30,8 @@ def project_create(request):
             form.save()
             return redirect('project-list')
     else:
-        form = ProjectForm()
+        user = request.user
+        form = ProjectForm(initial={'leader': user.id})
     context = {'form_project': form, 'page_title': 'R&D EPI | Create new project'}
     return render (request, 'coreapp/project_create.html', context)
 @login_required
