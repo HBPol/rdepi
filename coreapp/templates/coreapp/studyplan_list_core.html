@@ -26,4 +26,7 @@
 		{% endfor %}
 	</table>
 	<br>
-	<a href="{% url 'studyplan-create' %}">Add new</a>
+	<a href="{% url 'studyplan-create' %}">Add new</a> | 
+	{% if project %}
+	<a href="{% url 'project-studyplan-create' project.id %}">Add new for project {{ project.name }} ({{ project.prefix }})</a>
+	{% endif %}

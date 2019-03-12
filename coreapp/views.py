@@ -278,6 +278,22 @@ def project_labbook_list(request, id):
     context = {'labbooks': labbooks, 'project': project, 'page_title': 'R&D EPI | Lab books'}
     return render(request, 'coreapp/project_labbook_list.html', context)
 
+# New views to add new documents with pre-selected values for project and user (logged user).
+# TODO: consider implementing this in the "studyplan_create" function... no need to have two functions to do almost the same thing.
+@login_required
+def project_studyplan_create(request, id):
+    if request.method == "POST":
+        form = StudyPlanForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('project-studyplan-list', id=id)
+    else:
+        project = Project.objects.get(id=id)
+        user = request.user
+        form = StudyPlanForm(initial={'project': project.id, 'author': user.id})
+    context = {'form_studyplan': form, 'page_title': 'R&D EPI | Create new study plan'}
+    return render (request, 'coreapp/studyplan_create.html', context)
+
 
 
 
