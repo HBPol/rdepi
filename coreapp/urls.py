@@ -12,13 +12,14 @@ urlpatterns = [
     path('project/<int:id>/report', views.project_report_list, name='project-report-list'),
     path('project/<int:id>/relatedfile', views.project_relatedfile_list, name='project-relatedfile-list'),
     path('project/<int:id>/labbook', views.project_labbook_list, name='project-labbook-list'),
+    
     # These are specific for creating new documents for a specific project
     path('studyplan/create/project/<int:id>', views.project_studyplan_create, name='project-studyplan-create'),
-    # TODO: add url and views for the remaining document types...
-    # ...
-    # ...
-    # ...
+    path('report/create/project/<int:id>', views.project_report_create, name='project-report-create'),
+    path('relatedfile/create/project/<int:id>', views.project_relatedfile_create, name='project-relatedfile-create'),
+    path('labbook/create/project/<int:id>', views.project_labbook_create, name='project-labbook-create'),
     
+    # And the following are the usual paths for a basic CRUD with no initial filtering
     path('project/', views.project_list, name='project-list'),
     path('project/create/', views.project_create, name='project-create'),
     path('project/edit/<int:id>', views.project_edit, name='project-edit'),

@@ -295,6 +295,46 @@ def project_studyplan_create(request, id):
     context = {'form_studyplan': form, 'page_title': 'R&D EPI | Create new study plan'}
     return render (request, 'coreapp/studyplan_create.html', context)
 
+@login_required
+def project_report_create(request, id):
+    if request.method == "POST":
+        form = ReportForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('project-report-list', id=id)
+    else:
+        project = Project.objects.get(id=id)
+        user = request.user
+        form = ReportForm(initial={'project': project.id, 'author': user.id})
+    context = {'form_report': form, 'page_title': 'R&D EPI | Create new report'}
+    return render (request, 'coreapp/report_create.html', context)
 
+@login_required
+def project_relatedfile_create(request, id):
+    if request.method == "POST":
+        form = RelatedFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('project-relatedfile-list', id=id)
+    else:
+        project = Project.objects.get(id=id)
+        user = request.user
+        form = RelatedFileForm(initial={'project': project.id, 'author': user.id})
+    context = {'form_relatedfile': form, 'page_title': 'R&D EPI | Create new related file'}
+    return render (request, 'coreapp/relatedfile_create.html', context)
+
+@login_required
+def project_labbook_create(request, id):
+    if request.method == "POST":
+        form = LabBookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('project-labbook-list', id=id)
+    else:
+        project = Project.objects.get(id=id)
+        user = request.user
+        form = LabBookForm(initial={'project': project.id, 'author': user.id})
+    context = {'form_labbook': form, 'page_title': 'R&D EPI | Create new lab book'}
+    return render (request, 'coreapp/labbook_create.html', context)
 
 

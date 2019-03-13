@@ -33,3 +33,7 @@
 	</table>
 	<br>
 	<a href="{% url 'labbook-create' %}">Add new</a>
+	{% if project %}
+	<a href="{% url 'project-labbook-create' project.id %}">Add new for this project ({{ project.prefix }})</a>
+	{% endif %}
+	

@@ -26,4 +26,7 @@
 		{% endfor %}
 	</table>
 	<br>
-	<a href="{% url 'report-create' %}">Add new</a>
+	<a href="{% url 'report-create' %}">Add new</a> | 
+	{% if project %}
+	<a href="{% url 'project-report-create' project.id %}">Add new for this project ({{ project.prefix }})</a>
+	{% endif %}
