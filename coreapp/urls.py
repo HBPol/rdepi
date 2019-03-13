@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     
-    path('', views.home, name='home'),
+    path('', views.project_list, name='home'),
     
     # The following are specific paths to display list of documents filtering by a specific project
     path('project/<int:id>/index', views.project_index, name='project-index'),
