@@ -1,7 +1,33 @@
-<h1>Login</h1>
-<hr>
-<form method="post">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit">Login</button>
-</form>
+{% extends 'registration/login_base_generic.html' %}
+
+{% block content %}
+	<div class="container" id="container-center">
+		{% if form.errors %}
+			<div class="alert alert-warning" role="alert">Incorrect username and/or password. Please try again</div>
+		{% endif %}
+		
+		{% if next %}
+			{% if user.is_authenticated %}
+				<div class="alert alert-warning" role="alert">Your account doesn't have access to this page. To proceed, please login with an account that has access.</div>
+			{% else %}
+				<!-- <p>Please login.</p> -->
+			{% endif %}
+		{% endif %}
+		
+		<form class="form-login" method="post" action="{% url 'login' %}">
+			<img class="mb-4" src="" alt="Site logo" width="72" height="72">
+			<h1 class="">Welcome</h1>
+			<h2 class="">Please log in</h2>
+			{% csrf_token %}
+			<div class="form-group">
+				<input type="text" class="form-control" name="username" placeholder="Username" required="required"/>
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" name="password" placeholder="Password" required="required"/>
+			</div>
+			<button type="submit" class="btn btn-primary">Login</button>
+			<p class="mt-5 mb-3 text-muted">&copy; 2018</p>
+			<input type="hidden" name="next" value="{{ next }}"/>
+		</form>
+	</div>
+{% endblock %}
