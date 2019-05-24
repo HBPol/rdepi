@@ -134,3 +134,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # This is to redirect to a specified url (home). The default redirects to '/accounts/profile/'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = '/'
+
+# This is to define static assets that are not tied to a particular app
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/static/',
+]
